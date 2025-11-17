@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NPCParticles : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem deathParticlePrefab;
+    public ParticleSystem deathParticlePrefab;
 
     private void Start()
     {
@@ -11,6 +11,7 @@ public class NPCParticles : MonoBehaviour
 
     private void HandleNPCDied()
     {
+        Debug.Log(deathParticlePrefab);
         var deathparticle = Instantiate(deathParticlePrefab, transform.position, transform.rotation);
         Destroy(deathparticle, 4f);
     }

@@ -37,7 +37,7 @@ public class NumberOfHitsHealth : MonoBehaviour, IHealth
             OnHPPctChanged(CurrentHpPct);
 
             if (hitsRemaining <= 0)
-                OnDied();
+                Die();
         }
     }
 
@@ -46,5 +46,10 @@ public class NumberOfHitsHealth : MonoBehaviour, IHealth
         canTakeDamage = false;
         yield return new WaitForSeconds(invulnerabilityTimeAfterEachHit);
         canTakeDamage = true;
+    }
+    private void Die()
+    {
+        OnDied();
+        GameObject.Destroy(this.gameObject);
     }
 }
